@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1 - UI Component</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #333;
+        }
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .logo a:hover {
+            color: #00bcd4;
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        .card-section {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .project-card {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            width: 320px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .card-image {
+            position: relative;
+        }
+        .card-image img {
+            width: 100%;
+            display: block;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #00bcd4;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+        .card-content {
+            padding: 20px;
+            display: grid;
+            gap: 10px;
+        }
+        .card-content h3 {
+            font-size: 20px;
+            color: #333;
+        }
+        .card-content p {
+            font-size: 16px;
+            color: #666;
+        }
+        .btn {
+            margin-top: auto;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background: #333;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #00bcd4;
+        }
+        .contact-section {
+            padding: 40px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+        input[type="text"], input[type="email"], select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            display: block;
+            color: #333;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+            border-color: #00bcd4;
+            box-shadow: 0 0 5px rgba(0,188,212,0.5);
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #00bcd4;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="##" class="logo">Logo</a>
+      <ul class="nav-links">
+        <li><a href="##">Home</a></li>
+        <li><a href="##">Projects</a></li>
+        <li><a href="##">About</a></li>
+        <li><a href="##">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="card-section">
+      <article class="project-card">
+        <div class="card-image">
+          <img src="nylas-banner-img.jpg" alt="Website Banner Image" />
+          <p class="badge">Web Design</p>
+        </div>
+        <div class="card-content">
+          <h3>Modern Portfolio</h3>
+          <p>A clean and responsive portfolio website showcasing creative projects.</p>
+          <button class="btn">View Project</button>
+        </div>
+      </article>
+    </section>
+    <section class="contact-section">
+      <h2>Contact Us</h2>
+      <form class="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="john.doe@example.com" required />
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="" hidden>Select a subject</option>
+            <option value="design">Web Design</option>
+            <option value="development">Development</option>
+            <option value="general">General Inquiry</option>
+          </select>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
+          <input type="submit" value="Submit">
+      </form>
+    </section>
+  </main>
+</body>
+</html>
