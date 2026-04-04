@@ -186,6 +186,12 @@
         input[type="submit"]:hover {
             background-color: #00bcd4;
         }
+        #noResults {
+            text-align: center;
+            display:none; 
+            color:red; 
+            margin-top:10px;
+        }
     </style>
 </head>
 <body>
@@ -203,19 +209,10 @@
   <main>
     <section class="card-section">
         <input type="text" id="searchInput" placeholder="Search projects..." />
-
+        <p id="noResults">
+          No projects found.
+        </p>
         <div id="cardContainer"></div>
-      <!-- <article class="project-card">
-        <div class="card-image">
-          <img src="nylas-banner-img.jpg" alt="Website Banner Image" />
-          <p class="badge">Web Design</p>
-        </div>
-        <div class="card-content">
-          <h3>Modern Portfolio</h3>
-          <p>A clean and responsive portfolio website showcasing creative projects.</p>
-          <button class="btn">View Project</button>
-        </div>
-      </article> -->
     </section>
     <section class="contact-section">
       <h2>Contact Us</h2>
@@ -279,37 +276,54 @@
     const searchInput = document.getElementById("searchInput");
 
     function renderProjects(projectList) {
-    container.innerHTML = ""; 
+      container.innerHTML = "";
 
-    projectList.forEach(project => {
+      const noResults = document.getElementById("noResults");
+
+      if (projectList.length === 0) {
+        noResults.style.display = "block";
+        return;
+      } else {
+        noResults.style.display = "none";
+      }
+
+      projectList.forEach(project => {
         const card = `
-        <article class="project-card">
-            <div class="card-image">
-                <img src="${project.image}" alt="${project.title}" />
-                <p class="badge">${project.category}</p>
-            </div>
-            <div class="card-content">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <a href="${project.link}" class="btn">View Project</a>
-            </div>
-        </article>
+          <article class="project-card">
+              <div class="card-image">
+                  <img src="${project.image}" alt="${project.title}" />
+                  <p class="badge">${project.category}</p>
+              </div>
+              <div class="card-content">
+                  <h3>${project.title}</h3>
+                  <p>${project.description}</p>
+                  <a href="${project.link}" class="btn">View Project</a>
+              </div>
+          </article>
         `;
 
         container.innerHTML += card;
-    });
+      });
     }
+
     renderProjects(projects);
 
     searchInput.addEventListener("input", (e) => {
-    const searchTerm = e.target.value.toLowerCase();
+      const searchTerm = e.target.value.toLowerCase().trim();
 
-    const filteredProjects = projects.filter(project =>
+      const filteredProjects = projects.filter(project =>
         project.title.toLowerCase().includes(searchTerm) ||
-        project.category.toLowerCase().includes(searchTerm)
-    );
+        project.category.toLowerCase().includes(searchTerm) ||
+        project.description.toLowerCase().includes(searchTerm) 
+      );
 
-    renderProjects(filteredProjects);
+      renderProjects(filteredProjects);
+
+      searchInput.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        searchInput.dispatchEvent(new Event("input"));
+      }
+    });
     });
   </script>
 </body>
