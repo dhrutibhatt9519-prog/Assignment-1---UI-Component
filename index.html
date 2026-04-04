@@ -249,7 +249,7 @@
     const searchInput = document.getElementById("searchInput");
 
     function renderProjects(projectList) {
-    container.innerHTML = ""; // Clear existing cards
+    container.innerHTML = ""; 
 
     projectList.forEach(project => {
         const card = `
@@ -271,6 +271,18 @@
         container.innerHTML += card;
     });
     }
+    renderProjects(projects);
+
+    searchInput.addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+
+    const filteredProjects = projects.filter(project =>
+        project.title.toLowerCase().includes(searchTerm) ||
+        project.category.toLowerCase().includes(searchTerm)
+    );
+
+    renderProjects(filteredProjects);
+    });
   </script>
 </body>
 </html>
