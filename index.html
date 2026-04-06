@@ -52,13 +52,16 @@
             padding: 40px;
         }
         #cardContainer {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
             margin-top: 20px;
+            justify-content: center;
+            justify-items: center;
         }
         .project-card {
             display: grid;
+            max-width: 320px;
             grid-template-rows: auto 1fr;
             border-radius: 10px;
             overflow: hidden;
@@ -272,13 +275,12 @@
         link: "#"
     }
     ];
-    const container = document.getElementById("cardContainer");
-    const searchInput = document.getElementById("searchInput");
+    const container = document.querySelector("#cardContainer");
+    const searchInput = document.querySelector("#searchInput");
+    const noResults = document.querySelector("#noResults");
 
     function renderProjects(projectList) {
       container.innerHTML = "";
-
-      const noResults = document.getElementById("noResults");
 
       if (projectList.length === 0) {
         noResults.style.display = "block";
@@ -287,8 +289,9 @@
         noResults.style.display = "none";
       }
 
+      let cardsHTML = "";
       projectList.forEach(project => {
-        const card = `
+        cardsHTML += `
           <article class="project-card">
               <div class="card-image">
                   <img src="${project.image}" alt="${project.title}" />
@@ -301,29 +304,27 @@
               </div>
           </article>
         `;
-
-        container.innerHTML += card;
       });
+    container.innerHTML = cardsHTML;
     }
 
     renderProjects(projects);
 
     searchInput.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase().trim();
-
+    
       const filteredProjects = projects.filter(project =>
         project.title.toLowerCase().includes(searchTerm) ||
         project.category.toLowerCase().includes(searchTerm) ||
-        project.description.toLowerCase().includes(searchTerm) 
+        project.description.toLowerCase().includes(searchTerm)
       );
-
+    
       renderProjects(filteredProjects);
-
+    });
       searchInput.addEventListener("keyup", (e) => {
       if (e.key === "Enter") {
         searchInput.dispatchEvent(new Event("input"));
       }
-    });
     });
   </script>
 </body>
