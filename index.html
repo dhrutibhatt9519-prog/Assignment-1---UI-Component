@@ -277,8 +277,8 @@
       async function fetchProjects() {
       try {
         const response = await fetch("https://dhrutibhatt9519-prog.github.io/Assignment-1---UI-Component/data/projects.json"); 
-        const projects = await response.json();
-    
+        
+        const data = await response.json();
         allProjects = data;
 
         renderProjects(allProjects);
