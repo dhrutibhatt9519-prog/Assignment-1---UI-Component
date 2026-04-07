@@ -1,0 +1,37 @@
+[
+    {
+        title: "Portfolio Website 1",
+        description: "A clean and responsive portfolio website showcasing creative projects.",
+        category: "Web Design",
+        image: "nylas-banner-img.jpg",
+        link: "#"
+    },
+    {
+        title: "Portfolio Website 2",
+        description: "A sleek shopping experience with modern UI patterns.",
+        category: "UI/UX",
+        image: "IMG_6639.JPG",
+        link: "#"
+    },
+    {
+        title: "Portfolio Website 3",
+        description: "Analytics dashboard with data visualization.",
+        category: "Web App",
+        image: "nylas-banner-img.jpg",
+        link: "#"
+    },
+    {
+        title: "Portfolio Website 4",
+        description: "A clean and responsive portfolio website showcasing creative projects.",
+        category: "Web Design",
+        image: "IMG_6639.JPG",
+        link: "#"
+    },
+    {
+        title: "Portfolio Website 5",
+        description: "A sleek shopping experience with modern UI patterns.",
+        category: "UI/UX",
+        image: "nylas-banner-img.jpg",
+        link: "#"
+    }
+    ]
